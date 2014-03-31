@@ -73,7 +73,10 @@ module Capistrano
           case text
           when /\bpassword.*:/i
             # subversion is prompting for a password
-            %("#{scm_password_prompt}"\n)
+            # %("#{scm_password_prompt}"\n)
+
+            # Send scm_password
+            %(#{variable(:scm_password)}\n)
           when %r{\(yes/no\)}
             # subversion is asking whether or not to connect
             "yes\n"
